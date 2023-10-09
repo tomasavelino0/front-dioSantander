@@ -1,0 +1,35 @@
+<body>
+    <header>
+        <h1>Teste api Tomas Avelino</h1>
+        <p>Complete somente os campos CPF e EMAIL pois a api nao aceita esses campos repetidos</p>
+    </header>
+    <div class="container">
+        <div class="input-container">
+            <form class="form-user" [formGroup]="form" (submit)="onSubmitUser()">
+                <label>Nome:</label>
+                <input formControlName="firstName" type="text" name="nome" />
+                <label>Sobrenome:</label>
+                <input formControlName="lastName" type="text" name="sobrenome">
+                <label>CPF:</label>
+                <input formControlName="document" type="text" name="documento" placeholder="Ex: 23112312143">
+                <div *ngIf="getFieldError('document', 'required')">Document is required!</div>
+                <div *ngIf="getFieldError('document', 'pattern')">Invalid document format!</div>
+                <label>Balanco:</label>
+                <input formControlName="balance" type="number" name="balanco">
+                <label>Email:</label>
+                <input formControlName="email" type="email" name="email" placeholder="Ex: test@test.com">
+                <div *ngIf="getFieldError('email', 'required')">Email is required!</div>
+                <div *ngIf="getFieldError('email', 'email')">Invalid email format!</div>
+                <label>Senha:</label>
+                <input formControlName="password" type="text" name="senha">
+                <label for="dropTypes">Tipo do usuario:</label>
+                <select name="types" id="dropTypes" formControlName="userType">
+                    <option value="COMMOM">comum</option>
+                    <option value="MERCHANT">logista</option>
+                </select>
+                <input type="submit" [disabled]="form.invalid" value="CRIAR">
+            </form>
+        </div>
+    </div>
+
+</body>

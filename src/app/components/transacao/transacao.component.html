@@ -1,0 +1,32 @@
+<body>
+    <header>
+        <h1>
+            {{userData.firstName}}
+        </h1>
+        <h2>
+            Saldo: {{ balance }}
+        </h2>
+    </header>
+    <p>Teste enviando para este documento: 12312312354 que existe no banco de dados, e teste inserindo dados invalidos
+    </p>
+    <div class="container">
+        <div class="input-container">
+            <form class="form-transaction" (submit)="submitTransaction()" [formGroup]="form">
+                <label for="value">Valor:</label>
+                <input type="number" name="value" formControlName="value">
+                <label for="receiver">Documento do recebedor:</label>
+                <input type="text" name="document" formControlName="document">
+                <div class="warnings" *ngIf="documentNotFound">
+                    documento nao encontrado.
+                </div>
+                <input type="submit" value="Enviar dinheiro" [disabled]="form.invalid">
+                <div class="sucess-warnings" *ngIf="sucessTransaction">
+                    Transacao feita com sucesso!
+                </div>
+                <div class="warnings" *ngIf="notBalance">
+                    Saldo indisponivel
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

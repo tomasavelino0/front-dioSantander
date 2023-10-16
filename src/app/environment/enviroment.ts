@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    baseUrl: 'https://bootcamp-santander-production.up.railway.app'
+    baseUrl: 'https://tomas3092.c34.integrator.host'
 };
